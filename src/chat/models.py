@@ -14,5 +14,5 @@ class Message(models.Model):
         return self.author.username
 
     # since we should never load all the messages, load the most recent 30 first
-    def last_10_messages(self):
+    def last_10_messages():
         return Message.objects.order_by('-created_at').all()[:10]

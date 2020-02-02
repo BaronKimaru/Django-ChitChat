@@ -25,6 +25,7 @@ class ChatConsumer(WebsocketConsumer):
         messages = Message.last_10_messages()
         # serialize the messages from the database
         content = {
+            # 'command': 'messages',
             "messages": self.serialize_messages_to_json(messages)
         }
         # send those 10 serialized messages to the websocket
