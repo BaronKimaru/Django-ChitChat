@@ -25,11 +25,11 @@ class ChatConsumer(WebsocketConsumer):
         messages = Message.last_10_messages()
         # serialize the messages from the database
         content = {
-            # 'command': 'messages',
+            'command': 'messages',
             "messages": self.serialize_messages_to_json(messages)
         }
         # send those 10 serialized messages to the websocket
-        self.send_chat_message(content)
+        self.send_message(content)
 
     def new_message(self, data):
         """Needs the author as well as content"""
@@ -102,7 +102,8 @@ class ChatConsumer(WebsocketConsumer):
 
     def send_chat_message(self, message):
         """
-        Send the message acquired from "receive()" => "commands" => "fetch_messages/new_message" Back to the specified room
+        Send the message acquired from "receive()" => "commands" => "fetch_messages/new_message"
+        Back to the specified room
         """
         async_to_sync(self.channel_layer.group_send) (
             self.room_group_name,
