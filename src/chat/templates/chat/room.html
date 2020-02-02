@@ -40,7 +40,7 @@
         var message = messageInputDom.value;
         chatSocket.send(JSON.stringify({
             'message': message,
-            'command': 'new_message'
+            'command': 'fetch_messages'
         }));
 
         // resets the value to empty to show that its been sent
