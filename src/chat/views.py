@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'chat/index.html', {})
 
 
-@login_required             # to take care of situations of anonymous users eg incognito
+# @login_required             # to take care of situations of anonymous users eg incognito
 def room(request, room_name):
     return render(request, 'chat/room.html', {
         'room_name_json': mark_safe(json.dumps(room_name)),         # marks room_name server-side as opposed to doing it client-side
