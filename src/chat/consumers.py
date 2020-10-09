@@ -19,6 +19,20 @@ class ChatConsumer(WebsocketConsumer):
         corresponding to the `room name`. Every ChatConsumer in the same group 
         (and thus in the same room) will then receive the message from the group
         and forward it over WebSocket back to JavaScript, where it will be appended to the chat log
+        //////////////////////////// DJANGO VERSION OF THE CODES - BACKEND /////////////////////////////////////////////////////////////////
+        // TODO: FETCH MESSAGES LOGIC                                                                                                     //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////// JAVASCRIPT VERSION OF THE CODES - FRONTEND ////////////////////////////////////////////////////////////
+        // FETCH MESSAGES LOGIC                                                                                                           //
+        // chatSocket.onpen(event) => fetchMessages => chatSocket.send( {'command': command(JSON.stringify('fetch_messages'))} );         //
+        //                                                                                                                                //
+        // CREATE NEW MESSAGES LOGIC                                                                                                      //
+        // onSubmit => ("#messageInput").value => chatSocket.send( {'command': command(JSON.stringify('new_messages'),                    //
+        //                                                          'message': message, 'from': username )})                              //
+        // GET MESSAGE                                                                                                                    //
+        // chatSocket.onmessage(event) => data=JSON.parse(event.data) => if data == messages, add messages to messages, else create       //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     """
     def fetch_messages(self, data):
         """ Fetches messages from the Database and passes them into the webSocket """
