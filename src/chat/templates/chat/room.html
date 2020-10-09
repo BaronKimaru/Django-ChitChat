@@ -112,6 +112,19 @@
 <script src="{% static 'main.js' %}"></script>
 <script src="{% static 'reconnecting-websocket.js' %}"></script>
 <script>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // FETCH MESSAGES LOGIC                                                                                                           //
+    // chatSocket.onpen(event) => fetchMessages => chatSocket.send( {'command': command(JSON.stringify('fetch_messages'))} );         //
+    //                                                                                                                                //
+    // CREATE NEW MESSAGES LOGIC                                                                                                      //
+    // onSubmit => ("#messageInput").value => chatSocket.send( {'command': command(JSON.stringify('new_messages'),                    //
+    //                                                                      'message': message, 'from': username )})                  //
+    // GET MESSAGE                                                                                                                    //
+    // chatSocket.onmessage(event) => data=JSON.parse(event.data) => if data == messages, add messages to messages, else create       //
+    //                                                                                                                                //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+  
     var roomName = {{ room_name_json }};
     var username = {{ username }};
 
@@ -126,8 +139,8 @@
     }
 
     // when you receive a message, it parses the message and adds this new message to old messages
-    chatSocket.onmessage = function(e) {
-        var data = JSON.parse(e.data);
+    chatSocket.onmessage = function(event) {
+        var data = JSON.parse(event.data);
         // displays the most recent ten messages when page is loaded -msgListTag.<li> at the bottom
         if (data['command'] === 'messages') {
             for (let i=0; i<data['messages'].length; i++) {
@@ -139,7 +152,7 @@
         }
     };
 
-    chatSocket.onclose = function(e) {
+    chatSocket.onclose = function(event) {
         console.error('Chat socket closed unexpectedly');
     };
 
