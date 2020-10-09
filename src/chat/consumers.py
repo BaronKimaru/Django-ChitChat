@@ -100,6 +100,7 @@ class ChatConsumer(WebsocketConsumer):
         # get the command. if either one or the other: redirect to respective method which will use send_chat_message() inside it
         self.commands[ data['command'] ](self, data) # (self, data) are the arguments for method called
 
+    # Send message to room group
     def send_chat_message(self, message):
         """
         Send the message acquired from "receive()" => "commands" => "fetch_messages/new_message"
