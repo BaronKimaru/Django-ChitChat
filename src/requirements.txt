@@ -24,7 +24,7 @@ colorclass==2.2.0
 confuse==1.0.0
 constantly==15.1.0
 croniter==0.3.30
-cryptography==2.8
+cryptography==3.2
 daphne==2.4.1
 Django==2.2.1
 django-modelcluster==4.4
