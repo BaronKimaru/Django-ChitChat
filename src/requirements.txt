@@ -4,7 +4,7 @@ asgiref==3.2.3
 astroid==2.2.5
 async-timeout==3.0.1
 attrs==19.3.0
-autobahn==20.2.2
+autobahn==20.12.3
 autoenv==1.0.0
 Automat==20.2.0
 autopep8==1.4.4
