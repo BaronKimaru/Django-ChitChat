@@ -55,7 +55,7 @@ itsdangerous==1.1.0
 jaraco.functools==2.0
 Jinja2==2.10.1
 lazy-object-proxy==1.4.1
-Mako==1.0.13
+Mako==1.2.2
 MarkupSafe==1.1.1
 mccabe==0.6.1
 mock==3.0.5
